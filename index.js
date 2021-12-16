@@ -17,7 +17,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         await client.connect();
-        const database = client.db("carShop");
+        const database = client.db("bookShop");
         const productCollection = database.collection("products");
 
         // GET API
@@ -104,7 +104,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-    res.send("Hello Car Lovers!");
+    res.send("Hello Book Lovers!");
 });
 
 app.listen(port, () => {
