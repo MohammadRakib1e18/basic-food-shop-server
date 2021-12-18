@@ -29,6 +29,22 @@ async function run() {
             res.send(services);
         });
 
+        const reviewCollection = database.collection("review");
+        // POST review
+        app.post("/review", async (req, res) => {
+            const review = req.body;
+            const result = await reviewCollection.insertOne(review);
+            console.log(result);
+            res.json({ result });
+        });
+        // GET for review
+        app.get("/review", async (req, res) => {
+            const cursor = reviewCollection.find({});
+            const reviews = await cursor.toArray();
+            console.log(reviews);
+            res.send(reviews);
+        });
+
         const orderCollection = database.collection("order");
 
         // POST API
